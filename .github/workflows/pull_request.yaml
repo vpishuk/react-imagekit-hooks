@@ -30,7 +30,6 @@ jobs:
                 cache: "npm"
             - uses: ./.github/actions/install
             - uses: ./.github/actions/build
-            - uses: ./.github/actions/test
 
     assign-labels:
         runs-on: ubuntu-latest

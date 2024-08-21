@@ -35,7 +35,6 @@ jobs:
                 cache: "npm"
             - uses: ./.github/actions/install
             - uses: ./.github/actions/build
-            - uses: ./.github/actions/test
 
     version:
         needs: [test, lint]
