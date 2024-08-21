@@ -6,6 +6,7 @@ on:
 
 permissions:
     contents: write
+    pull-requests: write
 
 env:
     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -49,7 +50,6 @@ jobs:
             with:
               token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
               release-type: node
-              skip-github-pull-request: true
           - uses: actions/setup-node@v1
             with:
               node-version-file: .nvmrc
