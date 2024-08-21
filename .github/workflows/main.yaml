@@ -60,19 +60,11 @@ jobs:
                   actor: "github-actions[bot]"
             - run: echo "Output Version ${{ steps.versionBump.outputs.tag }}"
 
-    Draft-Release:
-        needs: version
-
+    release-please:
         runs-on: ubuntu-latest
-
-        concurrency: Draft-Release
-
         steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-              with:
-                ref: ${{ needs.version.outputs.tag }}
-            - name: Draft release
-              run: ${{ format('{0}/.github/scripts/release-drafter.sh', github.workspace) }} "${{ needs.version.outputs.tag }}"
-              env:
-                GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          - uses: googleapis/release-please-action@v4
+            with:
+              token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+              release-type: node
+              skip-github-pull-request: true
