@@ -15,6 +15,7 @@ runs:
       run: |
         git config user.name "${{ inputs.actor }}"
         git config user.email "${{ inputs.actor}}@users.noreply.github.com"
+        git fetch --tags
         npm version from-git
         echo "tag=$(git for-each-ref --sort=-creatordate --count 1 --format="%(refname:short)" "refs/tags/")" >> "$GITHUB_OUTPUT"
       shell: bash
