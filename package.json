@@ -10,6 +10,9 @@
     "peerDependencies": {
         "react": "^18.2.0"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "description": "This module offers react hooks to work with ImageKit platform",
     "devDependencies": {
         "@laverve/eslint-utils": "^5.1.1",
