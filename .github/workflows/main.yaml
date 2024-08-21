@@ -1,0 +1,79 @@
+name: Release Train
+
+on:
+    push:
+        branches: ["main"]
+
+permissions:
+    contents: write
+    pages: write
+    id-token: write
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version-file: .nvmrc
+                cache: "npm"
+            - uses: ./.github/actions/install
+            - uses: ./.github/actions/lint
+
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version-file: .nvmrc
+                cache: "npm"
+            - uses: ./.github/actions/install
+            - uses: ./.github/actions/build
+            - uses: ./.github/actions/test
+
+    version:
+        needs: [test, lint]
+
+        runs-on: ubuntu-latest
+
+        concurrency: Draft-Release
+
+        outputs:
+            tag: ${{ steps.versionBump.outputs.tag }}
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+                  cache: "npm"
+            - uses: ./.github/actions/install
+            - uses: ./.github/actions/version-bump
+              id: versionBump
+              with:
+                  actor: "github-actions[bot]"
+            - run: echo "Output Version ${{ steps.versionBump.outputs.tag }}"
+
+    Draft-Release:
+        needs: version
+
+        runs-on: ubuntu-latest
+
+        concurrency: Draft-Release
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                ref: ${{ needs.version.outputs.tag }}
+            - name: Draft release
+              run: ${{ format('{0}/.github/scripts/release-drafter.sh', github.workspace) }} "${{ needs.version.outputs.tag }}"
+              env:
+                GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}

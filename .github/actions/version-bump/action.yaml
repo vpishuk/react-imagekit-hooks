@@ -1,0 +1,20 @@
+name: "Bump version"
+description: 'Bumps version'
+inputs:
+  actor:
+    description: 'actor'
+    required: true
+outputs:
+  tag:
+    description: 'Latest tag'
+    value: ${{ steps.version.outputs.tag }}
+runs:
+  using: "composite"
+  steps:
+    - id: version
+      run: |
+        git config user.name "${{ inputs.actor }}"
+        git config user.email "${{ inputs.actor}}@users.noreply.github.com"
+        npm version from-git
+        echo "tag=$(git for-each-ref --sort=-creatordate --count 1 --format="%(refname:short)" "refs/tags/")" >> "$GITHUB_OUTPUT"
+      shell: bash

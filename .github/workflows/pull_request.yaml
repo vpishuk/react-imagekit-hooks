@@ -1,0 +1,57 @@
+name: CI
+
+on:
+    pull_request:
+        branches: ["main"]
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+                  cache: "npm"
+            - uses: ./.github/actions/install
+            - uses: ./.github/actions/lint
+
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version-file: .nvmrc
+                cache: "npm"
+            - uses: ./.github/actions/install
+            - uses: ./.github/actions/build
+            - uses: ./.github/actions/test
+
+    assign-labels:
+        runs-on: ubuntu-latest
+
+        if: github.event.pull_request.merged == false
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: mauroalderete/action-assign-labels@v1
+              with:
+                github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+                pull-request-number: ${{ github.event.pull_request.number }}
+                conventional-commits: |
+                  conventional-commits:
+                    - type: 'fix'
+                      nouns: ['FIX', 'Fix', 'fix', 'FIXED', 'Fixed', 'fixed']
+                      labels: ['bug']
+                    - type: 'feature'
+                      nouns: ['FEATURE', 'Feature', 'feature', 'FEAT', 'Feat', 'feat']
+                      labels: ['enhancement']
+                    - type: 'breaking_change'
+                      nouns: ['BREAKING CHANGE', 'BREAKING', 'MAJOR']
+                      labels: ['breaking-change']
