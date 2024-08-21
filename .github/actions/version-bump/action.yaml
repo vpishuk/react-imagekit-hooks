@@ -17,8 +17,11 @@ runs:
         git config user.email "${{ inputs.actor}}@users.noreply.github.com"
         git fetch --prune --unshallow --tags
 
-        npx git-conventional-commits changelog
         version=$(npx git-conventional-commits version)
         npm version "v$version"
+        npx git-conventional-commits changelog
+        git add -A
+        git commit --amend --no-verify -m "v$version"
+        git push origin --tags
         echo "tag=$(git for-each-ref --sort=-creatordate --count 1 --format="%(refname:short)" "refs/tags/")" >> "$GITHUB_OUTPUT"
       shell: bash
