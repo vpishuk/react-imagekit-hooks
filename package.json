@@ -52,5 +52,5 @@
         "prepare": "husky",
         "publish": "lerna publish --no-private"
     },
-    "version": "0.0.0"
+    "version": "0.0.1"
 }
