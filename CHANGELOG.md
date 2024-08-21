@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.3](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.0.2...v0.0.3) (2024-08-21)
+
+
+### Bug Fixes
+
+* switch to setup-node v4 ([181b62c](https://github.com/vpishuk/react-imagekit-hooks/commit/181b62c2124e0ef91e95aaf14a93f1b61ee50d62))
+
 ## 0.0.2 (2024-08-21)
 
 
