@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.0.3...v0.0.4) (2024-08-21)
+
+
+### Miscellaneous Chores
+
+* release 0.0.4 ([41751af](https://github.com/vpishuk/react-imagekit-hooks/commit/41751afc6b42e862a4af58652ac746b7054e8839))
+
 ## [0.0.3](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.0.2...v0.0.3) (2024-08-21)
 
 
