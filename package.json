@@ -19,7 +19,6 @@
         "@types/react": "^18.2.21",
         "git-conventional-commits": "^2.6.7",
         "husky": "^9.1.1",
-        "lerna": "^8.1.6",
         "lint-staged": "^15.1.0",
         "prettier": "^3.0.3",
         "react": "^18.2.0",
@@ -52,8 +51,7 @@
         "lint": "eslint",
         "lint:fix": "eslint  --fix",
         "lint:staged": "lint-staged",
-        "prepare": "husky",
-        "publish": "lerna publish --no-private"
+        "prepare": "husky"
     },
     "version": "0.0.3"
 }
