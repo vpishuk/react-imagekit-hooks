@@ -6,6 +6,7 @@ This module offers a set of hooks to work with [ImageKit](https://imagekit.io/) 
 It uses [imagekit-javascript](https://www.npmjs.com/package/imagekit-javascript) module under the hood. Make sure to read documentation for it.
 
 ## Installation
+
 Run the following command to install timer in your repository:
 
 ```
@@ -32,20 +33,19 @@ npm i react-imagekit-hooks
 
 2. Use one of the hooks: `useIKImage` or `useIKUpload`
 
-## useIKImage
+## useIKImageSrc
 
 Use this hook to build URL for an image available through ImageKit platform.
 This hook can generate both a URL for a preview and for an original image.
 
 ### Options
 
-1. isLazy - set to `true` to turn-on lazy loading.
-2. imageOptions - same options as you send to `imagekit.url` method.
-3. previewOptions - configure your preview image
+1. imageOptions - same options as you send to `imagekit.url` method.
 
 ### Example
+
 ```
-const image = useIKImage({
+const image = useIKImageSrc({
     imageOptions: {
         path: "/my-image",
         transformation: [
@@ -57,7 +57,7 @@ const image = useIKImage({
     }
 });
 
-return <img src={image.src} ref={image.ref} />
+return <img src={image.src} />
 ```
 
 ## useIKUpload
@@ -123,5 +123,3 @@ Create a branch to work on your code changes.
 Once you are done with coding, create pull request and get an approval.
 
 Lastly, enjoy your changes.
-
-
