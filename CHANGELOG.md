@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.1.0...v0.1.1) (2024-08-31)
+
+
+### Bug Fixes
+
+* fixes tsconfig ([#9](https://github.com/vpishuk/react-imagekit-hooks/issues/9)) ([b5b81e6](https://github.com/vpishuk/react-imagekit-hooks/commit/b5b81e60898c65ea9f5f787db4836e4a08ab8c75))
+
 ## [0.1.0](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.0.5...v0.1.0) (2024-08-31)
 
 
