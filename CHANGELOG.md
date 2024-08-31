@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.0.5...v0.1.0) (2024-08-31)
+
+
+### Features
+
+* adds useIKImageSrc hook ([#7](https://github.com/vpishuk/react-imagekit-hooks/issues/7)) ([ebe36d6](https://github.com/vpishuk/react-imagekit-hooks/commit/ebe36d6968e37c56c5537147ea1f5f42f5a41ea4))
+
 ## [0.0.5](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.0.4...v0.0.5) (2024-08-21)
 
 
