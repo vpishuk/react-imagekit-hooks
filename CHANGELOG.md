@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.2.0...v0.2.1) (2024-10-27)
+
+
+### Bug Fixes
+
+* extends async upload interface ([#20](https://github.com/vpishuk/react-imagekit-hooks/issues/20)) ([9d93040](https://github.com/vpishuk/react-imagekit-hooks/commit/9d93040107337422267e539943305c221c585187))
+
 ## [0.2.0](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.1.1...v0.2.0) (2024-10-27)
 
 
