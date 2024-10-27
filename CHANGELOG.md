@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.1.1...v0.2.0) (2024-10-27)
+
+
+### Features
+
+* adds ability to upload file via URL ([#17](https://github.com/vpishuk/react-imagekit-hooks/issues/17)) ([6c45f30](https://github.com/vpishuk/react-imagekit-hooks/commit/6c45f302e52137a8450cae5e7684ea3f9f1097aa))
+
 ## [0.1.1](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.1.0...v0.1.1) (2024-08-31)
 
 
