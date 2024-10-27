@@ -44,7 +44,7 @@ export const useIKUpload = ({ options, onStart, onError, onProgress, onSuccess, 
         }
     }, [xhr]);
 
-    const uploadInternal = useCallback(async (file: File): Promise<IKProgress> => {
+    const uploadInternal = useCallback(async (file: string | Blob | File, fileName?: string): Promise<IKProgress> => {
         let progress: IKProgress = {
             details: null,
             data: null,
@@ -108,7 +108,7 @@ export const useIKUpload = ({ options, onStart, onError, onProgress, onSuccess, 
                         xhr.upload.addEventListener("abort", onAbortCallback);
 
                         const params = {
-                            fileName: file.name,
+                            fileName: (file instanceof File ? file?.name : fileName) || "filename",
                             ...options,
                             file: file,
                             signature,
@@ -147,8 +147,8 @@ export const useIKUpload = ({ options, onStart, onError, onProgress, onSuccess, 
     }, []);
 
     const upload = useCallback(
-        (file: File) => {
-            uploadInternal(file).then(
+        (file: string | Blob | File, fileName?: string) => {
+            uploadInternal(file, fileName).then(
                 (result) => {
                     setCurrentProgress(result);
                     onSuccess?.(result);
