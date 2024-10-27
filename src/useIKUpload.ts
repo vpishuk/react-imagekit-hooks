@@ -163,8 +163,8 @@ export const useIKUpload = ({ options, onStart, onError, onProgress, onSuccess, 
     );
 
     const uploadAsync = useCallback(
-        (file: File) =>
-            uploadInternal(file).then(
+        (file: string | Blob | File, fileName?: string) =>
+            uploadInternal(file, fileName).then(
                 (result) => {
                     setCurrentProgress(result);
                     onSuccess?.(result);
