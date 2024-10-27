@@ -12,19 +12,6 @@ env:
     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-    lint:
-        runs-on: ubuntu-latest
-
-        steps:
-            - uses: actions/checkout@v4
-            - name: Use Node.js
-              uses: actions/setup-node@v4
-              with:
-                node-version-file: .nvmrc
-                cache: "npm"
-            - uses: ./.github/actions/install
-            - uses: ./.github/actions/lint
-
     test:
         runs-on: ubuntu-latest
 
@@ -36,12 +23,14 @@ jobs:
                 node-version-file: .nvmrc
                 cache: "npm"
             - uses: ./.github/actions/install
+            - uses: ./.github/actions/lint
             - uses: ./.github/actions/build
 
     release-please:
         runs-on: ubuntu-latest
+        if: ${{ steps.release.outputs.release_created }}
 
-        needs: [test, lint]
+        needs: [lint]
 
         steps:
           - uses: actions/checkout@v4
@@ -54,10 +43,6 @@ jobs:
             with:
               node-version-file: .nvmrc
               cache: "npm"
-            if: ${{ steps.release.outputs.release_created }}
           - uses: ./.github/actions/install
-            if: ${{ steps.release.outputs.release_created }}
           - uses: ./.github/actions/build
-            if: ${{ steps.release.outputs.release_created }}
           - uses: ./.github/actions/publish
-            if: ${{ steps.release.outputs.release_created }}
