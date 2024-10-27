@@ -12,7 +12,7 @@ env:
     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-    test:
+    release-train:
         runs-on: ubuntu-latest
 
         steps:
@@ -25,24 +25,9 @@ jobs:
             - uses: ./.github/actions/install
             - uses: ./.github/actions/lint
             - uses: ./.github/actions/build
-
-    release-please:
-        runs-on: ubuntu-latest
-        if: ${{ steps.release.outputs.release_created }}
-
-        needs: [lint]
-
-        steps:
-          - uses: actions/checkout@v4
-          - uses: googleapis/release-please-action@v4
-            id: release
-            with:
-              release-type: node
-          - name: Use Node.js
-            uses: actions/setup-node@v4
-            with:
-              node-version-file: .nvmrc
-              cache: "npm"
-          - uses: ./.github/actions/install
-          - uses: ./.github/actions/build
-          - uses: ./.github/actions/publish
+            - uses: googleapis/release-please-action@v4
+              id: release
+              with:
+                release-type: node
+            - uses: ./.github/actions/publish
+              if: ${{ steps.release.outputs.release_created }}
