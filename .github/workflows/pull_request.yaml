@@ -5,7 +5,7 @@ on:
         branches: ["main"]
 
 jobs:
-    lint:
+    test:
         runs-on: ubuntu-latest
 
         steps:
@@ -18,27 +18,3 @@ jobs:
             - uses: ./.github/actions/install
             - uses: ./.github/actions/lint
             - uses: ./.github/actions/build
-
-    assign-labels:
-        runs-on: ubuntu-latest
-
-        if: github.event.pull_request.merged == false
-
-        steps:
-            - uses: actions/checkout@v4
-
-            - uses: mauroalderete/action-assign-labels@v1
-              with:
-                github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-                pull-request-number: ${{ github.event.pull_request.number }}
-                conventional-commits: |
-                  conventional-commits:
-                    - type: 'fix'
-                      nouns: ['FIX', 'Fix', 'fix', 'FIXED', 'Fixed', 'fixed']
-                      labels: ['bug']
-                    - type: 'feature'
-                      nouns: ['FEATURE', 'Feature', 'feature', 'FEAT', 'Feat', 'feat']
-                      labels: ['enhancement']
-                    - type: 'breaking_change'
-                      nouns: ['BREAKING CHANGE', 'BREAKING', 'MAJOR']
-                      labels: ['breaking-change']
