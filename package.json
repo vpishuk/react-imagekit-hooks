@@ -8,7 +8,7 @@
         "imagekit-javascript": "^3.0.2"
     },
     "peerDependencies": {
-        "react": "^18.2.0"
+        "react": "^19.0.0"
     },
     "publishConfig": {
         "access": "public"
@@ -16,11 +16,11 @@
     "description": "This module offers react hooks to work with ImageKit platform",
     "devDependencies": {
         "@laverve/eslint-utils": "^5.1.1",
-        "@types/react": "^18.2.21",
+        "@types/react": "^19.0.1",
         "husky": "^9.1.1",
         "lint-staged": "^15.1.0",
         "prettier": "^3.0.3",
-        "react": "^18.2.0",
+        "react": "^19.0.0",
         "typescript": "^5.2.2"
     },
     "homepage": "https://github.com/vpishuk/react-imagekit-hooks",
