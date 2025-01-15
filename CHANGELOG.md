@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.2.1...v0.3.0) (2025-01-15)
+
+
+### Miscellaneous Chores
+
+* Dependencies ([#30](https://github.com/vpishuk/react-imagekit-hooks/issues/30)) ([97d80dc](https://github.com/vpishuk/react-imagekit-hooks/commit/97d80dca65f6db0dd797cbec8fd887fa7de83512))
+
 ## [0.2.1](https://github.com/vpishuk/react-imagekit-hooks/compare/v0.2.0...v0.2.1) (2024-10-27)
 
 
