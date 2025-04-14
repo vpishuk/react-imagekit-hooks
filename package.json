@@ -5,7 +5,7 @@
         "url": "https://github.com/vpishuk/react-imagekit-hooks/issues"
     },
     "peerDependencies": {
-        "imagekit-javascript": "^3.0.2",
+        "imagekit-javascript": "^4.0.1",
         "react": "^18.0.0 || ^19.0.0"
     },
     "publishConfig": {
@@ -16,7 +16,7 @@
         "@laverve/eslint-utils": "^5.1.1",
         "@types/react": "^19.0.2",
         "husky": "^9.1.1",
-        "imagekit-javascript": "^3.0.2",
+        "imagekit-javascript": "^4.0.1",
         "lint-staged": "^15.1.0",
         "prettier": "^3.0.3",
         "react": "^19.0.0",
